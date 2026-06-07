@@ -1,0 +1,66 @@
+<!--
+    darkmodern.nvim — colorscheme showcase
+    AI-generated code for colorscheme highlighting demonstration only.
+    No functional guarantees. Not intended for production use.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="darkmodern.nvim colorscheme showcase" />
+    <title>darkmodern.nvim — showcase</title>
+    <style>
+        :root {
+            --bg:      #1e1e2e;
+            --surface: #2a2a3d;
+            --primary: #89b4fa;
+            --text:    #cdd6f4;
+        }
+
+        body {
+            background: var(--bg);
+            color:      var(--text);
+            font-family: "JetBrains Mono", monospace;
+            display:    flex;
+            place-items: center;
+            min-height: 100vh;
+            margin:     0;
+        }
+
+        .card {
+            background:    var(--surface);
+            border:        1px solid var(--primary);
+            border-radius: 0.5rem;
+            padding:       2rem 3rem;
+            text-align:    center;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="card" id="app" data-version="1.0.0">
+        <h1 class="title">darkmodern.nvim</h1>
+        <p class="subtitle">colorscheme showcase</p>
+        <button type="button" id="greet-btn">Say Hello</button>
+        <p id="output" aria-live="polite"></p>
+    </main>
+
+    <script>
+        const GREETING = "Hello, World!";
+
+        const btn    = document.getElementById("greet-btn");
+        const output = document.getElementById("output");
+
+        let count = 0;
+
+        btn.addEventListener("click", () => {
+            count += 1;
+            output.textContent = `${GREETING} (×${count})`;
+            output.style.color = count % 2 === 0 ? "#cba6f7" : "#a6e3a1";
+        });
+    </script>
+
+</body>
+</html>

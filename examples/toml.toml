@@ -1,0 +1,97 @@
+# darkmodern.nvim — colorscheme showcase
+# AI-generated code for colorscheme highlighting demonstration only.
+# No functional guarantees. Not intended for production use.
+
+# --- Project ---
+
+[project]
+name        = "darkmodern"
+version     = "1.0.0"
+description = "A dark modern Neovim colorscheme"
+authors     = ["darkmodern <dev@example.com>"]
+license     = "MIT"
+keywords    = ["neovim", "colorscheme", "dark", "modern"]
+homepage    = "https://github.com/andots/darkmodern.nvim"
+readme      = "README.md"
+
+# --- Colors ---
+
+[colors]
+bg      = "#1e1e2e"
+surface = "#2a2a3d"
+primary = "#89b4fa"
+accent  = "#cba6f7"
+success = "#a6e3a1"
+warning = "#f9e2af"
+text    = "#cdd6f4"
+muted   = "#6c7086"
+
+# --- Palette variants ---
+
+[colors.dark]
+bg      = "#11111b"
+surface = "#1e1e2e"
+
+[colors.light]
+bg      = "#eff1f5"
+surface = "#e6e9ef"
+text    = "#4c4f69"
+
+# --- Fonts ---
+
+[fonts]
+sans  = ["Inter", "Segoe UI", "sans-serif"]
+mono  = ["JetBrains Mono", "Fira Code", "monospace"]
+sizes = { sm = 12, md = 14, lg = 16, xl = 20 }
+
+# --- Features ---
+
+[features]
+italic_comments    = true
+bold_keywords      = true
+transparent_bg     = false
+highlight_url      = true
+dim_inactive_wins  = false
+
+# --- Items ---
+
+[[items]]
+id     = 1
+label  = "alpha"
+weight = 1.5
+status = "active"
+tags   = ["foo", "bar"]
+
+[[items]]
+id     = 2
+label  = "beta"
+weight = 2.0
+status = "active"
+tags   = ["bar", "baz"]
+
+[[items]]
+id     = 3
+label  = "gamma"
+weight = 0.75
+status = "inactive"
+tags   = ["foo"]
+
+# --- Build ---
+
+[build]
+target  = "release"
+timeout = 30_000
+workers = 4
+env     = { APP_ENV = "production", TZ = "Asia/Tokyo" }
+
+[build.flags]
+debug    = false
+optimize = true
+strip    = true
+
+# --- Dates ---
+
+[meta]
+created_at  = 2024-01-15T09:00:00Z
+updated_at  = 2024-03-20T14:30:00+09:00
+released_on = 2024-01-15

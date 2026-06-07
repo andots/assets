@@ -1,0 +1,65 @@
+# darkmodern.nvim — colorscheme showcase
+# AI-generated code for colorscheme highlighting demonstration only.
+# No functional guarantees. Not intended for production use.
+# --- Project ---
+project:
+  name: darkmodern.nvim
+  version: 1.0.0
+  description: A dark, modern Neovim colorscheme
+  license: MIT
+  homepage: https://github.com/andots/darkmodern.nvim
+  authors:
+    - name: darkmodern
+      email: dev@example.com
+      role: maintainer
+  keywords:
+    - neovim
+    - colorscheme
+    - dark
+    - modern
+# --- Features ---
+features:
+  italic_comments: true
+  bold_keywords: true
+  transparent_bg: false
+  highlight_url: true
+  dim_inactive_wins: false
+# --- Items ---
+items:
+  - id: 1
+    label: alpha
+    weight: 1.5
+    status: active
+    tags: [foo, bar]
+    greeting: "Hello, World!"
+  - id: 2
+    label: beta
+    weight: 2.0
+    status: active
+    tags: [bar, baz]
+  - id: 3
+    label: gamma
+    weight: 0.75
+    status: inactive
+    tags: [foo]
+# --- Build ---
+build:
+  target: release
+  workers: 4
+  timeout: 30_000
+  flags:
+    debug: false
+    optimize: true
+    strip: true
+  env:
+    APP_ENV: production
+    TZ: Asia/Tokyo
+# --- Anchors ---
+defaults: &defaults
+  status: active
+  weight: 1.0
+  tags: []
+extra:
+  !!merge <<: *defaults
+  label: delta
+  weight: 1.25

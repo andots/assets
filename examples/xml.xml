@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    darkmodern.nvim — colorscheme showcase
+    AI-generated code for colorscheme highlighting demonstration only.
+    No functional guarantees. Not intended for production use.
+-->
+<registry
+    xmlns="https://example.com/darkmodern"
+    version="1.0.0"
+    status="active"
+>
+
+    <project>
+        <name>darkmodern.nvim</name>
+        <license>MIT</license>
+        <homepage>https://github.com/andots/darkmodern.nvim</homepage>
+    </project>
+
+    <colors>
+        <color id="bg"      hex="#1e1e2e" />
+        <color id="primary" hex="#89b4fa" />
+        <color id="accent"  hex="#cba6f7" />
+        <color id="text"    hex="#cdd6f4" />
+    </colors>
+
+    <items threshold="1.0">
+        <item id="1" status="active">
+            <label>alpha</label>
+            <weight unit="kg">1.5</weight>
+            <greeting><![CDATA[Hello, World!]]></greeting>
+        </item>
+        <item id="2" status="active">
+            <label>beta</label>
+            <weight unit="kg">2.0</weight>
+        </item>
+        <item id="3" status="inactive">
+            <label>gamma</label>
+            <weight unit="kg">0.75</weight>
+        </item>
+    </items>
+
+</registry>

@@ -1,0 +1,177 @@
+# darkmodern.nvim — colorscheme showcase
+# AI-generated code for colorscheme highlighting demonstration only.
+# No functional guarantees. Not intended for production use.
+
+# --- Scalars ---
+
+scalar DateTime
+scalar Weight
+
+# --- Enums ---
+
+enum Status {
+	ACTIVE
+	INACTIVE
+	ARCHIVED
+}
+
+enum SortOrder {
+	ASC
+	DESC
+}
+
+# --- Interfaces ---
+
+interface Node {
+	id: ID!
+}
+
+interface Timestamped {
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+# --- Types ---
+
+"""
+A weighted item in the registry.
+"""
+type Item implements Node & Timestamped {
+	id: ID!
+	label: String!
+	weight: Weight!
+	status: Status!
+	tags: [String!]!
+	createdAt: DateTime!
+	updatedAt: DateTime!
+	related: [Item!]
+}
+
+type Registry {
+	id: ID!
+	name: String!
+	totalCount: Int!
+	items(
+		status: Status = ACTIVE
+		sortOrder: SortOrder = ASC
+		limit: Int = 10
+		offset: Int = 0
+	): [Item!]!
+}
+
+type PageInfo {
+	hasNextPage: Boolean!
+	hasPreviousPage: Boolean!
+	startCursor: String
+	endCursor: String
+}
+
+type ItemEdge {
+	node: Item!
+	cursor: String!
+}
+
+type ItemConnection {
+	edges: [ItemEdge!]!
+	pageInfo: PageInfo!
+	total: Int!
+}
+
+# --- Input Types ---
+
+input CreateItemInput {
+	label: String!
+	weight: Float!
+	tags: [String!]
+	status: Status = ACTIVE
+}
+
+input UpdateItemInput {
+	id: ID!
+	label: String
+	weight: Float
+	tags: [String!]
+	status: Status
+}
+
+input ItemFilterInput {
+	status: Status
+	minWeight: Float
+	maxWeight: Float
+	tags: [String!]
+}
+
+# --- Queries ---
+
+type Query {
+	"""
+	Fetch a single item by ID.
+	"""
+	item(id: ID!): Item
+
+	"""
+	Fetch a paginated list of items.
+	"""
+	items(
+		filter: ItemFilterInput
+		sortOrder: SortOrder = ASC
+		first: Int = 10
+		after: String
+	): ItemConnection!
+
+	"""
+	Fetch the registry overview.
+	"""
+	registry(id: ID!): Registry
+
+	"""
+	Greet the world.
+	"""
+	hello: String!
+}
+
+# --- Mutations ---
+
+type Mutation {
+	"""
+	Create a new item.
+	"""
+	createItem(input: CreateItemInput!): Item!
+
+	"""
+	Update an existing item.
+	"""
+	updateItem(input: UpdateItemInput!): Item!
+
+	"""
+	Archive an item by ID.
+	"""
+	archiveItem(id: ID!): Item!
+
+	"""
+	Delete an item by ID.
+	"""
+	deleteItem(id: ID!): Boolean!
+}
+
+# --- Subscriptions ---
+
+type Subscription {
+	"""
+	Stream item status changes in real time.
+	"""
+	itemStatusChanged(id: ID!): Item!
+
+	"""
+	Stream new items as they are created.
+	"""
+	itemCreated(status: Status = ACTIVE): Item!
+}
+
+# --- Directives ---
+
+directive @auth(role: String! = "USER") on FIELD_DEFINITION | OBJECT
+
+directive @deprecated(
+	reason: String = "No longer supported"
+) on FIELD_DEFINITION | ENUM_VALUE

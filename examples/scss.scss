@@ -1,0 +1,168 @@
+// darkmodern.nvim — colorscheme showcase
+// AI-generated code for colorscheme highlighting demonstration only.
+// No functional guarantees. Not intended for production use.
+
+// --- Variables ---
+
+$color-bg:      #1e1e2e;
+$color-surface: #2a2a3d;
+$color-primary: #89b4fa;
+$color-accent:  #cba6f7;
+$color-success: #a6e3a1;
+$color-warning: #f9e2af;
+$color-text:    #cdd6f4;
+$color-muted:   #6c7086;
+
+$font-sans:     "Inter", "Segoe UI", sans-serif;
+$font-mono:     "JetBrains Mono", "Fira Code", monospace;
+$radius-md:     0.5rem;
+$radius-lg:     1rem;
+$spacing-sm:    0.5rem;
+$spacing-md:    1rem;
+$spacing-lg:    2rem;
+$transition:    200ms ease-in-out;
+
+$breakpoints: (
+    "sm": 480px,
+    "md": 768px,
+    "lg": 1200px,
+);
+
+// --- Mixins ---
+
+@mixin flex-center {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+}
+
+@mixin respond-to($bp) {
+    $value: map.get($breakpoints, $bp);
+    @if $value {
+        @media (max-width: $value) { @content; }
+    } @else {
+        @warn "Unknown breakpoint: `#{$bp}`";
+    }
+}
+
+@mixin button-variant($bg, $fg: $color-bg) {
+    background: $bg;
+    color:      $fg;
+
+    &:hover  { background: darken($bg, 8%); }
+    &:active { opacity: 0.85; }
+}
+
+// --- Functions ---
+
+@function spacing($multiplier: 1) {
+    @return $spacing-md * $multiplier;
+}
+
+@function color-alpha($color, $alpha) {
+    @return rgba($color, $alpha);
+}
+
+// --- Placeholders ---
+
+%card-base {
+    background:    $color-surface;
+    border:        1px solid $color-muted;
+    border-radius: $radius-md;
+    padding:       $spacing-md;
+}
+
+%visually-hidden {
+    position: absolute;
+    width:    1px;
+    height:   1px;
+    overflow: hidden;
+    clip:     rect(0 0 0 0);
+}
+
+// --- Layout ---
+
+.container {
+    display:               grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:                   spacing(2);
+    max-width:             map.get($breakpoints, "lg");
+    margin-inline:         auto;
+    padding:               $spacing-md;
+
+    @include respond-to("md") {
+        grid-template-columns: 1fr;
+    }
+}
+
+// --- Card ---
+
+.card {
+    @extend %card-base;
+
+    transition: transform $transition,
+                box-shadow $transition;
+
+    &:hover {
+        transform:  translateY(-4px);
+        box-shadow: 0 8px 24px color-alpha($color-bg, 0.4);
+    }
+
+    &__header {
+        font-family: $font-sans;
+        font-size:   clamp(1.25rem, 2.5vw, 2rem);
+        font-weight: 700;
+        color:       $color-primary;
+        line-height: 1.2;
+    }
+
+    &__body {
+        font-family: $font-mono;
+        font-size:   0.875rem;
+        color:       $color-text;
+        line-height: 1.6;
+        margin-top:  $spacing-sm;
+    }
+
+    &--featured {
+        border-color: $color-primary;
+        box-shadow:   0 0 0 1px $color-primary;
+    }
+}
+
+// --- Button ---
+
+.btn {
+    @include flex-center;
+
+    gap:           $spacing-sm;
+    padding:       $spacing-sm $spacing-md;
+    border:        none;
+    border-radius: $radius-md;
+    font-weight:   600;
+    cursor:        pointer;
+    transition:    background $transition;
+
+    @include button-variant($color-primary);
+
+    &--accent   { @include button-variant($color-accent); }
+    &--success  { @include button-variant($color-success); }
+    &--outline  {
+        background:   transparent;
+        border:       1px solid $color-primary;
+        color:        $color-primary;
+
+        &:hover { background: color-alpha($color-primary, 0.1); }
+    }
+}
+
+// --- Animations ---
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0);   }
+}
+
+.fade-in {
+    animation: fade-in 300ms $transition both;
+}
